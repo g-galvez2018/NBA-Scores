@@ -91,5 +91,7 @@ for (let game of warriorsGames) {
     homeTeam,
     awayTeam
   } = game;
+  const gameLi= document.createElement('li');
+  gameLi.innerText = '${awayTeam.team} @ {homeTeam.team}'
   console.log(awayTeam.team, homeTeam.team)
 }
