@@ -85,6 +85,7 @@ const warriorsGames = [{
 ]
 
 const ulParent = document.createElement('ul') ;
+const ulChild = document.createElement('ul') ;
 
 for (let game of warriorsGames) {
   const {
