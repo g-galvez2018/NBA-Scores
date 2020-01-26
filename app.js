@@ -98,4 +98,5 @@ for (let game of warriorsGames) {
   ulParent.appendChild(gameLi);
 }
 
-document.body.prepend(ulParent)
+document.body.prepend(ulParent);
+ulParent.appendChild(ulChild);
