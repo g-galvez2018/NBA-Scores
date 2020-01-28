@@ -85,18 +85,28 @@ const warriorsGames = [{
 ]
 
 const ulParent = document.createElement('ul') ;
-const ulChild = document.createElement('ul') ;
-
 for (let game of warriorsGames) {
   const {
     homeTeam,
     awayTeam
   } = game;
+  const {
+    team: hTeam,
+    points: hPoints
+  } = homeTeam;
+  
+
+  const {
+    team: aTeam,
+    points: aPoints
+  } = awayTeam;
   const gameLi= document.createElement('li');
-  gameLi.innerText = '${homeTeam.team} @ {awayTeam.team}'
-  console.log(awayTeam.team, homeTeam.team)
+  const teamNames = `${aTeam} @ ${hTeam}`;
+  const scoreLine = `${aPoints} - ${hPoints}`
+  const warriors = hTeam ===  'Golden State' ? homeTeam : awayTeam;
+  console.log(warriors)
+  gameLi.classList.add(warriors.isWinner ? 'win' : 'loss')
+  gameLi.innerHTML = `${teamNames} ${scoreLine}`
   ulParent.appendChild(gameLi);
 }
-
 document.body.prepend(ulParent);
-ulParent.appendChild(ulChild);
