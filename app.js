@@ -104,7 +104,7 @@ for (let game of warriorsGames) {
   const teamNames = `${aTeam} @ ${hTeam}`;
   const scoreLine = `${aPoints} - ${hPoints}`
   const warriors = hTeam ===  'Golden State' ? homeTeam : awayTeam;
-  console.log(warriors)
+  
   gameLi.classList.add(warriors.isWinner ? 'win' : 'loss')
   gameLi.innerHTML = `${teamNames} ${scoreLine}`
   ulParent.appendChild(gameLi);
