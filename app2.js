@@ -1,4 +1,4 @@
-const warriorsGames = [{
+const games = [{
     awayTeam: {
       team: 'Golden State',
       points: 119,
@@ -84,20 +84,33 @@ const warriorsGames = [{
   }
 ]
 
-const ulParent = document.createElement('ul') ;
-for (let game of warriorsGames) {
-  const { homeTeam, awayTeam } = game;
+const createTable = (games, targetTeam) => {
+  const ulParent = document.createElement ('ul')
+  for (let game of games) {        
+    const gameLi= document.createElement('li');
+    gameLi.innerHTML = getText(game);     
+    gameLi.classList.add(isWinner (game, targetTeam) ? 'win' : 'loss');    
+    ulParent.appendChild(gameLi);
+  }  
+  return ulParent;  
+}
+
+const isWinner = ({ homeTeam, awayTeam }, targetTeam) => {
+    const myTeam = homeTeam.team === targetTeam ? homeTeam : awayTeam;
+    return myTeam.isWinner    
+}
+
+const getText = ({homeTeam, awayTeam}) =>{
+  
   const { team: hTeam,points: hPoints} = homeTeam;
   const { team: aTeam,points: aPoints} = awayTeam;
-  const gameLi= document.createElement('li');
   const teamNames = `${aTeam} @ ${hTeam}`;
   const scoreLine = `${aPoints} - ${hPoints}`
-  const warriors = hTeam ===  'Golden State' ? homeTeam : awayTeam;
   
-  gameLi.classList.add(warriors.isWinner ? 'win' : 'loss')
-  gameLi.innerHTML = `${teamNames} ${scoreLine}`
-  ulParent.appendChild(gameLi);
+  return `${teamNames} ${scoreLine}`
 }
-document.body.prepend(ulParent);
 
+const table = createTable(games, 'Golden State');
+
+document.body.appendChild(table);
 
